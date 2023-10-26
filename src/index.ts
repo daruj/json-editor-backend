@@ -1,15 +1,14 @@
 import express from 'express'
 import wsServer from './websocket.js'
 import JSONRoutes from './modules/json/json.routes.js'
+import { config } from '../config.js'
 
 const app = express()
 
 app.use('/api/json', JSONRoutes)
 
-const port = 5001
-
-const server = app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+const server = app.listen(config.port, () => {
+    console.log(`Example app listening on port ${config.port}`)
 })
 
 server.on('upgrade', (request, socket, head) => {
