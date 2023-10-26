@@ -1,11 +1,13 @@
+import 'module-alias/register'
+
+import { wsServer } from '@src/websocket'
 import express from 'express'
-import wsServer from './websocket.js'
-import JSONRoutes from './modules/json/json.routes.js'
-import { config } from '../config.js'
+import { router } from '@src/modules/json/json.routes.js'
+import { config } from '@src/config.js'
 
 const app = express()
 
-app.use('/api/json', JSONRoutes)
+app.use('/api/json', router)
 
 const server = app.listen(config.port, () => {
     console.log(`Example app listening on port ${config.port}`)

@@ -9,7 +9,6 @@ wsServer.on('connection', (socket) => {
 
 wsServer.on('open', () => {
     //the server would now print "Hello"
-    wsServer.send('Hello')
 })
 
-export default wsServer
+export { wsServer }
