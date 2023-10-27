@@ -12,6 +12,7 @@ const app = express()
 // Middleware to parse JSON in the request body
 app.use(bodyParser.json())
 
+// Routes
 app.use('/api/json', router)
 
 const server = app.listen(config.port, () => {
