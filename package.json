@@ -1,7 +1,7 @@
 {
     "name": "json-editor-backend",
     "version": "1.0.0",
-    "description": "",
+    "description": "This is the backend for a coding challenge that is supposed to store and allow to update json data",
     "main": "index.js",
     "scripts": {
         "start": "npm run build && node ./build/index.js",
