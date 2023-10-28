@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import * as JSONService from './json.service'
 import { sendMessageToAllClients } from '@src/websocket'
 import { config } from '@src/config'
+import { CustomError } from '@src/errors'
 
 /**
  * Asynchronously retrieves JSON data and sends it as a response.
@@ -28,17 +29,21 @@ export const getJSONData = async (_: Request, res: Response) => {
  * @throws {Error} If the incoming JSON data is invalid.
  */
 export const updateJSONData = async (req: Request, res: Response) => {
-    let jsonData = req.body.json
+    let jsonData = {}
 
     try {
+        jsonData = JSON.parse(req.body.json)
+
         if (!jsonData || typeof jsonData !== 'object') {
-            throw new Error('The JSON is a required parameter')
+            throw new Error('The JSON is a required parameter or is not a valid object')
+        }
+    } catch (error) {
+        let errorMessage = 'An unexpected error ocurred'
+
+        if (error instanceof CustomError) {
+            errorMessage = error.message
         }
 
-        // with this I validate that the json is valid
-        jsonData = JSON.parse(JSON.stringify(jsonData))
-    } catch (error) {
-        const errorMessage = 'The JSON is not valid'
         console.error(errorMessage, error)
         return res.send(errorMessage).status(400)
     }

@@ -27,11 +27,12 @@ export const getJSONData = async (): Promise<DynamicObject<unknown>> => {
  *
  * @function
  * @async
- * @param {DynamicObject<unknown>} jsonData - The JSON data object to be written to the file.
+ * @param {DynamicObject<any>} jsonData - The JSON data object to be written to the file.
  * @returns {Promise<boolean>} A Promise that resolves to true if the update is successful, or false otherwise.
  * @throws {Error} If there's an error while writing the JSON data to the file.
  */
-export const updateJSONData = async (jsonData: DynamicObject<unknown>): Promise<boolean> => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const updateJSONData = async (jsonData: DynamicObject<any>): Promise<boolean> => {
     try {
         await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2), 'utf8')
         return true
