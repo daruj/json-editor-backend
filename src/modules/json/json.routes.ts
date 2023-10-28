@@ -1,5 +1,5 @@
 import express from 'express'
-import { getJSONData, updateJSONData } from './json.controller.js'
+import { getJSONData, updateJSONData } from './json.controller'
 
 const router = express.Router()
 

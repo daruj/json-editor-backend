@@ -4,8 +4,8 @@ import express from 'express'
 import bodyParser from 'body-parser'
 
 import { wsServer } from '@src/websocket'
-import { router } from '@src/modules/json/json.routes.js'
-import { config } from '@src/config.js'
+import { router } from '@src/modules/json/json.routes'
+import { config } from '@src/config'
 
 const app = express()
 

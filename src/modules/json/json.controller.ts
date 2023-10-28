@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import * as JSONService from './json.service'
 import { sendMessageToAllClients } from '@src/websocket'
-import { config } from '@src/config.js'
+import { config } from '@src/config'
 
 /**
  * Asynchronously retrieves JSON data and sends it as a response.
